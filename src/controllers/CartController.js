@@ -1,9 +1,15 @@
 // src/controllers/CartController.js
-import { Cart } from "../models";
+import { db } from "../models";
+
+const Cart = db.Cart;
 
 export const createCart = async (req, res) => {
   try {
-    const cart = await Cart.create(req.body);
+    const userId = req.user.id;
+    const cart = await Cart.create({
+      ...req.body,
+      userId,
+    });
     return res.status(201).json(cart);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -12,7 +18,23 @@ export const createCart = async (req, res) => {
 
 export const getAllCarts = async (req, res) => {
   try {
-    const carts = await Cart.findAll();
+    const carts = await Cart.findAll({
+      where: {
+        userId: req.user.id,
+      },
+      include: [
+        {
+          model: db.User,
+          as: "user",
+          attributes: ["id", "name", "email", "role"],
+        },
+        {
+          model: db.Item,
+          as: "item",
+          attributes: ["id", "name", "price", "image","description",],
+        },
+      ],
+    });
     return res.status(200).json(carts);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -22,7 +44,21 @@ export const getAllCarts = async (req, res) => {
 export const getCartById = async (req, res) => {
   const { id } = req.params;
   try {
-    const cart = await Cart.findByPk(id);
+    const cart = await Cart.findByPk(id, {
+      where: {
+        userId: req.user.id,
+      },
+      include: [
+        {
+          model: db.User,
+          as: "user",
+        },
+        {
+          model: db.Item,
+          as: "item",
+        },
+      ],
+    });
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }

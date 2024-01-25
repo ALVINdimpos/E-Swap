@@ -11,17 +11,35 @@ export default (sequelize, DataTypes) => {
       });
 
       // Cart has many items (as items in the cart)
-      Cart.belongsToMany(models.Item, {
-        through: "CartItem",
-        foreignKey: "cartId",
-        as: "items",
+      Cart.belongsTo(models.Item, {
+        foreignKey: "itemId",
+        as: "item",
       });
     }
   }
 
   Cart.init(
-      {
-        quantity: DataTypes.INTEGER,
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      itemId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Item",
+          key: "id",
+        },
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "User",
+          key: "id",
+        },
+      },
+      quantity: DataTypes.INTEGER,
     },
     {
       sequelize,

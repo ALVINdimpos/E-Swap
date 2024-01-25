@@ -24,8 +24,7 @@ export default (sequelize, DataTypes) => {
       });
 
       // Item has many wishlists (as items in the wishlist)
-      Item.belongsToMany(models.Wishlist, {
-        through: "WishlistItem",
+      Item.hasMany(models.Wishlist, {
         foreignKey: "itemId",
         as: "wishlists",
       });
@@ -39,6 +38,7 @@ export default (sequelize, DataTypes) => {
       image: DataTypes.STRING,
       price: DataTypes.FLOAT,
       quantity: DataTypes.INTEGER,
+      status: DataTypes.STRING,
       sellerId: DataTypes.INTEGER,
     },
     {

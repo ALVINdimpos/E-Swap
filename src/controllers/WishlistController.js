@@ -1,9 +1,15 @@
 // src/controllers/WishlistController.js
-import { Wishlist } from "../models";
+import { db } from "../models";
+
+const Wishlist = db.Wishlist;
 
 export const createWishlist = async (req, res) => {
   try {
-    const wishlist = await Wishlist.create(req.body);
+    const userId = req.user.id;
+    const wishlist = await Wishlist.create({
+      ...req.body,
+      userId,
+    });
     return res.status(201).json(wishlist);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -12,7 +18,23 @@ export const createWishlist = async (req, res) => {
 
 export const getAllWishlists = async (req, res) => {
   try {
-    const wishlists = await Wishlist.findAll();
+    const wishlists = await Wishlist.findAll({
+      where: {
+        userId: req.user.id,
+      },
+      include: [
+        {
+          model: db.User,
+          as: "user",
+          attributes: ["id", "name", "email", "role"],
+        },
+        {
+          model: db.Item,
+          as: "item",
+          attributes: ["id", "name", "price", "image", "description"],
+        },
+      ],
+    });
     return res.status(200).json(wishlists);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -22,7 +44,21 @@ export const getAllWishlists = async (req, res) => {
 export const getWishlistById = async (req, res) => {
   const { id } = req.params;
   try {
-    const wishlist = await Wishlist.findByPk(id);
+    const wishlist = await Wishlist.findByPk(id, {
+      where: {
+        userId: req.user.id,
+      },
+      include: [
+        {
+          model: db.User,
+          as: "user",
+        },
+        {
+          model: db.Item,
+          as: "item",
+        },
+      ],
+    });
     if (!wishlist) {
       return res.status(404).json({ message: "Wishlist not found" });
     }

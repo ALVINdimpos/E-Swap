@@ -5,7 +5,7 @@ const ItemController = require("../controllers/ItemController");
 const CartController = require("../controllers/CartController");
 const CategoryController = require("../controllers/CategoryController");
 const AuthController = require("../controllers/AuthController");
-
+const WishlistController = require("../controllers/WishlistController");
 // middleware
 import isSeller from "../middleware/isSeller"
 import isBuyer from "../middleware/isBuyer"
@@ -20,8 +20,8 @@ router.delete("/users/:id", UserController.deleteUser);
 
 // Item routes
 router.post("/items", isSeller, ItemController.createItem);
-router.get("/items", isSeller, ItemController.getAllItems);
-router.get("/items/:id", isSeller, ItemController.getItemById);
+router.get("/items",  ItemController.getAllItems);
+router.get("/items/:id",  ItemController.getItemById);
 router.put("/items/:id", isSeller, ItemController.updateItem);
 router.delete("/items/:id", isSeller, ItemController.deleteItem);
 
@@ -39,6 +39,12 @@ router.get("/categories/:id", isAdmin, CategoryController.getCategoryById);
 router.put("/categories/:id", isAdmin, CategoryController.updateCategory);
 router.delete("/categories/:id", isAdmin, CategoryController.deleteCategory);
 
+// Wishlist routes
+router.post("/wishlists", isBuyer, WishlistController.createWishlist);
+router.get("/wishlists", isBuyer, WishlistController.getAllWishlists);
+router.get("/wishlists/:id", isBuyer, WishlistController.getWishlistById);
+router.put("/wishlists/:id", isBuyer, WishlistController.updateWishlist);
+router.delete("/wishlists/:id", isBuyer, WishlistController.deleteWishlist);
 // Auth routes
 router.post("/register", AuthController.signUp);
 router.post("/login", AuthController.login);

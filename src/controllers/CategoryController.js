@@ -1,5 +1,5 @@
 // src/controllers/CategoryController.js
-import { db } from '../models';
+import { db } from "../models";
 
 const Category = db.Category;
 
@@ -26,7 +26,7 @@ export const getCategoryById = async (req, res) => {
   try {
     const category = await Category.findByPk(id);
     if (!category) {
-      return res.status(404).json({ message: 'Category not found' });
+      return res.status(404).json({ message: "Category not found" });
     }
     return res.status(200).json(category);
   } catch (error) {
@@ -44,7 +44,7 @@ export const updateCategory = async (req, res) => {
       const updatedCategory = await Category.findByPk(id);
       return res.status(200).json(updatedCategory);
     }
-    return res.status(404).json({ message: 'Category not found' });
+    return res.status(404).json({ message: "Category not found" });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -59,7 +59,7 @@ export const deleteCategory = async (req, res) => {
     if (deleted) {
       return res.status(204).send();
     }
-    return res.status(404).json({ message: 'Category not found' });
+    return res.status(404).json({ message: "Category not found" });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

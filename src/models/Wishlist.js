@@ -11,16 +11,35 @@ export default (sequelize, DataTypes) => {
       });
 
       // Wishlist has many items (as items in the wishlist)
-      Wishlist.belongsToMany(models.Item, {
-        through: "WishlistItem",
-        foreignKey: "wishlistId",
-        as: "items",
+      Wishlist.belongsTo(models.Item, {
+        foreignKey: "itemId",
+        as: "item",
       });
     }
   }
 
   Wishlist.init(
     {
+      id : {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "User",
+          key: "id",
+        },
+      },
+
+      itemId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Item",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,

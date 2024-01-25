@@ -12,7 +12,7 @@ export const createItem = async (req, res) => {
 
     const itemData = {
       ...req.body,
-      sellerId: req.user.id, 
+      sellerId: req.user.id,
     };
 
     const item = await Item.create(itemData);
