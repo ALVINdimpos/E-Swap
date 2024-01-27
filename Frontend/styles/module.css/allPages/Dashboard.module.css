@@ -1,0 +1,27 @@
+#Dashboard {
+  width: 100%;
+  height: auto;
+  margin-top: -15px !important;
+}
+
+#Dashboard #content{
+  height:auto;
+  width: 100% !important;  
+  margin-top: 20px !important;
+}
+
+#Dashboard #content .a_row h2{
+  color: black;
+  text-align: left;
+  margin-left: 4px;
+  height: 21px;
+  margin-top: 5px;
+
+}
+#Dashboard #content.seller .a_row h2{
+  margin-top: 0;
+}
+#Dashboard #content.seller .a_row .head{
+  margin-top: 5px;
+}
+/*# sourceMappingURL=Dashboard.module.css.map */

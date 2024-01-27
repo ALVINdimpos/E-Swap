@@ -1,0 +1,52 @@
+.add_page {
+  background-color: white;
+  border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0px 10px 0px;
+}
+.add_page .error {
+  color: brown;
+}
+.add_page .success {
+  color: navy;
+}
+.add_page form {
+  text-align: center;
+}
+.add_page form input {
+  border: 1px solid rgba(128, 128, 128, 0.6) !important;
+}
+.add_page form input.reason {
+  height: 100px;
+}
+.add_page form select {
+  color: black !important;
+}
+.add_page form div {
+  margin-top: 5px;
+  width: 80%;
+  margin-left: 10%;
+  text-align: left;
+}
+.add_page form div input, .add_page form div label {
+  width: 100% !important;
+  border-radius: 5px;
+  color: black !important;
+}
+.add_page form section {
+  display: grid;
+}
+.add_page form section.booking, .add_page form section.driver, .add_page form section.fuel, .add_page form section.vehicle {
+  grid-template-columns: auto auto auto;
+}
+.add_page form section.employee, .add_page form section.expense {
+  grid-template-columns: auto auto;
+}
+.add_page form section.reminder {
+  grid-template-columns: auto;
+}
+

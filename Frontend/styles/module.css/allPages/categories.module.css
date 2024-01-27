@@ -1,0 +1,240 @@
+.CatHeader, .containerGrid {
+  color: black !important;
+  padding: 0px !important;
+  width: 100%;
+}
+
+.CatHeader .card, .containerGrid .card{
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.CatHeader .card:hover, .containerGrid .card:hover {
+  font-weight: bold !important;
+  color: #2c2c2c;
+}
+
+.CatHeader {
+  height:78px;
+  overflow-x: scroll;
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  background-color: gray;
+}
+.CatHeader .card{
+  border-radius: 5px;
+  width: 220px;
+  height: 70px !important;
+  padding: 2px 0px 5px 0px;
+}
+.CatHeader .card .top, .CatHeader .card .bottom{
+  padding: 0 !important;
+  width: 100%;
+  margin: 0 !important;
+}
+.CatHeader .card .top{
+  height: 49px;
+  background-color: var(--maincolor_extralight);
+  border-radius: 50%;
+  width: 49px !important;
+  margin-left: 20px !important;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 0px solid transparent !important;
+  overflow: hidden;
+
+}
+.CatHeader .card .top img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.itemImg{
+  height: 150px !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+.itemImg img{
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.CatHeader .card .bottom{
+  height: 22px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 85px !important;
+}
+.containerGrid {
+  height: auto !important;
+  margin-top: 0px;
+  overflow: hidden;
+}
+.containerGrid .card {
+  border-radius: 10px;
+  width: 100%;
+  float: left;
+  height: 65px !important;
+  padding: 6px 4px;
+  background-color: #ceccc7;
+}
+.searchAndFilter{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.searchAndFilter #searchBar {
+  border: none;
+  outline: none;
+  height: 20px !important;
+  width: 80%;
+  background-color: rgba(236, 236, 236, 0.747);
+  color: grey;
+  float:left;
+  font-size: 10px !important;
+  color: #0e0e0e !important;
+
+}
+.searchAndFilter .filterButton{
+  color: black;
+  width: 10% !important;
+  margin: 0 !important;
+  background-color: #d8d7d7 !important;
+}
+.containerGrid .card.cart {
+  height: 60px !important;
+}
+.containerGrid .card.wishlist {
+  height: 40px !important;
+  width: 29.1%;
+  margin: 0 !important;
+  margin-left: 5px !important;
+}
+.containerGrid .card.wishlist:first-child,
+.containerGrid .card.wishlist:nth-child(3n+1){
+  margin-left: 0px !important;
+}
+.containerGrid .card.wishlist:nth-child(n+2){
+  margin-top: 0px !important;
+}
+.containerGrid .card.wishlist:nth-child(n+4){
+  margin-top: 5px !important;
+}
+.containerGrid .card:nth-child(n+2){
+  margin-top: 5px !important;
+}
+.containerGrid .card article, .containerGrid .card aside{
+  height: 35%;
+  max-height: 100%;
+}
+.containerGrid .card article{
+  width: 25%;
+  max-width: 30%;
+  margin-top: 10px;
+  
+}
+.containerGrid .card aside{
+  width: 65%;
+  max-width: 70%;
+  text-align: left;
+}
+.containerGrid .card aside p{
+  margin: 0 !important;
+}
+.containerGrid .card aside div p{
+  float: left !important;
+  margin-top: 12%!important;
+}
+.containerGrid .card aside p:first-child{
+  height: 70%;
+  align-items: center;
+  text-align: left;
+  overflow:hidden;
+}
+.chat{
+  color: blue;
+  width: 10%!important;
+}
+.shoppingCart{
+  color: blue;
+  width: 20%!important;
+  padding-left: 10%;
+}
+.containerGrid .card aside p:last-child{
+  color: blue;
+  height: 30%;
+  width: 45px !important;
+  margin-left: 10%!important;
+}
+.containerGrid .card.cart aside div{
+  height: 20%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  font-weight: normal !important;
+}
+.containerGrid .card.cart aside div p{
+  width: 33% !important;
+  font-style: italic;
+  color: navy;
+}
+.containerGrid .card.cart aside div p:first-child{
+  font-weight: normal !important;
+  text-align: left;
+}
+.containerGrid .card.cart aside div p:first-child{
+  font-weight: normal !important;
+  text-align: right;
+}
+.containerGrid .card.cart aside p:first-child{
+  height: 60%;
+  font-weight: bold;
+}
+.containerGrid .card.cart aside p:last-child{
+  height: 20%;
+}
+.containerGrid .card.cart aside div p:last-child{
+  height: 100%;
+  font-weight: normal !important;
+}
+.theItem{
+  width: 96%;
+  padding: 0 2%;
+}
+.theItem section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.theItem section.theHead, .theItem .details section.row1{
+  height: 30px !important;
+}
+.theItem section.theHead div, .theItem .details section.row1 div{
+  width: 33% !important;
+}
+.theItem section.theHead div:first-child, .theItem .details section.row1 div:first-child{
+  text-align: left !important;
+}
+.theItem section.theHead div:nth-child(2), .theItem .details section.row1 div:nth-child(2){
+  text-align: center;
+}
+.theItem section.theHead div:last-child, .theItem .details section.row1 div:last-child{
+  text-align: right;
+}
+.theItem section.theHead div h4{
+  color: black !important;
+  height: 4px !important;
+}
+.theItem .details .row2{
+  width: 100%;
+  text-align: left;
+}

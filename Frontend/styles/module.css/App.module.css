@@ -1,0 +1,72 @@
+#App {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+#App .theApp{
+  margin: 30px 0px !important;
+  height: var(--fullPageHeight) !important;
+  width: var(--fullPageWidth) !important;
+  border-radius: 15px !important;
+  border: 2px solid black;
+  overflow: hidden;
+  background-color: var(--pageWrapper_background);
+}
+#App a:hover, #App a:active, #App a:focus {
+  text-decoration: none;
+  color: var(--maincolor);
+  outline: none;
+}
+#App h4 {
+  color: rgba(245, 245, 245, 0.774);
+}
+#App a {
+  color: #ffffff;
+}
+
+#App .theApp .footer, #App .theApp .header, #App .theApp .page_wrapper{
+  width: 100% !important;
+}
+#App .theApp .header{
+  background-color: var(--header_background);  
+}
+#App .theApp .footer{
+  background-color: var(--footer_background);
+}
+#App .theApp .footer, #App .theApp .header{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 10% !important;
+}
+
+#App .theApp .header, #App .theApp .page_wrapper, #App .theApp .footer {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  transition: all 0.2s ease-in-out;
+}
+
+#App .theApp .page_wrapper {
+  padding: 0;
+  margin: 0;
+  background-color: var(--pageWrapper_background);
+  overflow-x: hidden;
+  padding: 2% 5%;
+  height: 77.5% !important;
+  width: 90% !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#App .theApp .page_wrapper.auth {
+  background-color: var(--pageWrapper_background1) !important;
+  height: 100% !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
