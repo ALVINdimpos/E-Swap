@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       status: {
-        type: Sequelize.ENUM("In Stock", "sold"),
+        type: Sequelize.ENUM("In Stock", "sold", "out of stock", "requested"),
       },
       sellerId: {
         type: Sequelize.INTEGER,

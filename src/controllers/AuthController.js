@@ -2,7 +2,7 @@
 import bcrypt from "bcrypt";
 import { db } from "../models";
 import generateToken from "../utils/token";
-
+import logger from "../../loggerConfigs";
 const User = db.User;
 // Sign-up method
 export const signUp = async (req, res) => {
@@ -22,10 +22,17 @@ export const signUp = async (req, res) => {
 
     // Return the user details (or token) in the response
     return res.status(201).json({
-      id: newUser.id,
-      name: newUser.name,
-      email: newUser.email,
+      status: "success",
+      message: "User created successfully",
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        phone: newUser.phone,
+        role: newUser.role,
+      },
     });
+
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -59,9 +66,15 @@ export const login = async (req, res) => {
 
     // Return the user details (or token) in the response
     return res.status(200).json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
+      status: "success",
+      message: "User logged in successfully",
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+      },
       token,
     });
   } catch (error) {

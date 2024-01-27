@@ -10,7 +10,11 @@ export const createWishlist = async (req, res) => {
       ...req.body,
       userId,
     });
-    return res.status(201).json(wishlist);
+    return res.status(201).json({
+      status: "success",
+      message: "Wishlist created successfully",
+      wishlist,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -35,7 +39,11 @@ export const getAllWishlists = async (req, res) => {
         },
       ],
     });
-    return res.status(200).json(wishlists);
+    return res.status(200).json({
+      status: "success",
+      message: "Wishlists retrieved successfully",
+      wishlists,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -60,9 +68,17 @@ export const getWishlistById = async (req, res) => {
       ],
     });
     if (!wishlist) {
-      return res.status(404).json({ message: "Wishlist not found" });
+      return res.status(404).json({
+        status: "error",
+        message: "Wishlist not found",
+
+       });
     }
-    return res.status(200).json(wishlist);
+    return res.status(200).json({
+      status: "success",
+      message: "Wishlist retrieved successfully",
+      wishlist,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -76,9 +92,16 @@ export const updateWishlist = async (req, res) => {
     });
     if (updated) {
       const updatedWishlist = await Wishlist.findByPk(id);
-      return res.status(200).json(updatedWishlist);
+      return res.status(200).json({
+        status: "success",
+        message: "Wishlist updated successfully",
+        updatedWishlist,
+      });
     }
-    return res.status(404).json({ message: "Wishlist not found" });
+    return res.status(404).json({
+      status: "error",
+      message: "Wishlist not found"
+     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -91,9 +114,16 @@ export const deleteWishlist = async (req, res) => {
       where: { id },
     });
     if (deleted) {
-      return res.status(204).send();
+      return res.status(204).json({
+        status: "success",
+        message: "Wishlist deleted successfully",
+        deleted,
+      });
     }
-    return res.status(404).json({ message: "Wishlist not found" });
+    return res.status(404).json({
+      status: "error",
+      message: "Wishlist not found"
+     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

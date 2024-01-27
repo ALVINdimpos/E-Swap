@@ -17,7 +17,11 @@ export const createItem = async (req, res) => {
 
     const item = await Item.create(itemData);
 
-    return res.status(201).json(item);
+    return res.status(201).json({
+      status: "success",
+      message: "Item created successfully",
+      item,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -26,7 +30,11 @@ export const createItem = async (req, res) => {
 export const getAllItems = async (req, res) => {
   try {
     const items = await Item.findAll();
-    return res.status(200).json(items);
+    return res.status(200).json({
+      status: "success",
+      message: "Items retrieved successfully",
+      items,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -39,7 +47,11 @@ export const getItemById = async (req, res) => {
     if (!item) {
       return res.status(404).json({ message: "Item not found" });
     }
-    return res.status(200).json(item);
+    return res.status(200).json({
+      status: "success",
+      message: "Item retrieved successfully",
+      item,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -53,9 +65,16 @@ export const updateItem = async (req, res) => {
     });
     if (updated) {
       const updatedItem = await Item.findByPk(id);
-      return res.status(200).json(updatedItem);
+      return res.status(200).json({
+        status: "success",
+        message: "Item updated successfully",
+        updatedItem,
+      });
     }
-    return res.status(404).json({ message: "Item not found" });
+    return res.status(404).json({
+      status: "error",
+      message: "Item not found",
+     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -68,7 +87,11 @@ export const deleteItem = async (req, res) => {
       where: { id },
     });
     if (deleted) {
-      return res.status(204).send();
+      return res.status(204).json({
+        status: "success",
+        message: "Item deleted successfully",
+        deletedItem: true,
+      });
     }
     return res.status(404).json({ message: "Item not found" });
   } catch (error) {

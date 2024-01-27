@@ -10,7 +10,11 @@ export const createCart = async (req, res) => {
       ...req.body,
       userId,
     });
-    return res.status(201).json(cart);
+    return res.status(201).json({
+      status: "success",
+      message: "Cart created successfully",
+      cart,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -35,7 +39,11 @@ export const getAllCarts = async (req, res) => {
         },
       ],
     });
-    return res.status(200).json(carts);
+    return res.status(200).json({
+      status: "success",
+      message: "Carts retrieved successfully",
+      carts,
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -60,9 +68,18 @@ export const getCartById = async (req, res) => {
       ],
     });
     if (!cart) {
-      return res.status(404).json({ message: "Cart not found" });
+      return res.status(404).json({ 
+        status: "error",
+        message: "Cart not found"
+       });
     }
-    return res.status(200).json(cart);
+    return res.status(200).json(
+      {
+        status: "success",
+        message: "Cart retrieved successfully",
+        cart,
+      }
+    );
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -76,9 +93,18 @@ export const updateCart = async (req, res) => {
     });
     if (updated) {
       const updatedCart = await Cart.findByPk(id);
-      return res.status(200).json(updatedCart);
+      return res.status(200).json(
+        {
+          status: "success",
+          message: "Cart updated successfully",
+          updatedCart,
+        }
+      );
     }
-    return res.status(404).json({ message: "Cart not found" });
+    return res.status(404).json({
+      status: "error",
+      message: "Cart not found"
+     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -91,9 +117,16 @@ export const deleteCart = async (req, res) => {
       where: { id },
     });
     if (deleted) {
-      return res.status(204).send();
+      return res.status(200).json({
+        status: "success",
+        message: "Cart deleted successfully",
+        deletedCart: true,
+      });
     }
-    return res.status(404).json({ message: "Cart not found" });
+    return res.status(404).json({ 
+      status: "error",
+      message: "Cart not found"
+     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

@@ -34,8 +34,8 @@ router.delete("/carts/:id", isBuyer, CartController.deleteCart);
 
 // Category routes
 router.post("/categories",isAdmin, CategoryController.createCategory);
-router.get("/categories", isAdmin, CategoryController.getAllCategories);
-router.get("/categories/:id", isAdmin, CategoryController.getCategoryById);
+router.get("/categories",  CategoryController.getAllCategories);
+router.get("/categories/:id",  CategoryController.getCategoryById);
 router.put("/categories/:id", isAdmin, CategoryController.updateCategory);
 router.delete("/categories/:id", isAdmin, CategoryController.deleteCategory);
 
